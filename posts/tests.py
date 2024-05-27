@@ -21,4 +21,3 @@ class PostTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "posts/home.html")
         self.assertContains(response, "This is a test!")
-

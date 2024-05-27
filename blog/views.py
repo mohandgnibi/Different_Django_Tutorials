@@ -11,5 +11,4 @@ class BlogListView(ListView):
 
 class BlogDetailView(DetailView):
     model = Post
-    template_name = 'blog/post_detail.html'
-    
+    template_name = "blog/post_detail.html"
