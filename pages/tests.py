@@ -8,15 +8,15 @@ class HomepageTests(SimpleTestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_url_available_by_name(self):
-        response = self.client.get(reverse("home"))
+        response = self.client.get(reverse("pages:home"))
         self.assertEqual(response.status_code, 200)
 
     def test_template_name_correct(self):  # new
-        response = self.client.get(reverse("home"))
-        self.assertTemplateUsed(response, "home.html")
+        response = self.client.get(reverse("pages:home"))
+        self.assertTemplateUsed(response, "pages/home.html")
 
     def test_template_content(self):  # new
-        response = self.client.get(reverse("home"))
+        response = self.client.get(reverse("pages:home"))
         self.assertContains(response, "<h1>Home page</h1>")
 
 
@@ -26,13 +26,13 @@ class AboutpageTests(SimpleTestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_url_available_by_name(self):
-        response = self.client.get(reverse("about"))
+        response = self.client.get(reverse("pages:about"))
         self.assertEqual(response.status_code, 200)
 
     def test_template_name_correct(self):  # new
-        response = self.client.get(reverse("about"))
-        self.assertTemplateUsed(response, "about.html")
+        response = self.client.get(reverse("pages:about"))
+        self.assertTemplateUsed(response, "pages/about.html")
 
     def test_template_content(self):  # new
-        response = self.client.get(reverse("about"))
+        response = self.client.get(reverse("pages:about"))
         self.assertContains(response, "<h1>About page</h1>")
