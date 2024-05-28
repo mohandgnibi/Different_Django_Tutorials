@@ -34,13 +34,15 @@ class BlogTests(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_post_listview(self):
-        response = self.client.get(reverse('blog:home'))
+        response = self.client.get(reverse("blog:home"))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Nice body content")
         self.assertTemplateUsed(response, "blog/home.html")
 
     def test_post_detailview(self):
-        response = self.client.get(reverse("blog:post_detail", kwargs={"pk": self.post.pk}))
+        response = self.client.get(
+            reverse("blog:post_detail", kwargs={"pk": self.post.pk})
+        )
         no_response = self.client.get("/blog/post/100000/")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(no_response.status_code, 404)
@@ -73,8 +75,5 @@ class BlogTests(TestCase):
         self.assertEqual(Post.objects.last().body, "Updated text")
 
     def test_post_deleteview(self):
-        response = self.client.post(reverse('blog:post_delete', args='1'))
+        response = self.client.post(reverse("blog:post_delete", args="1"))
         self.assertEqual(response.status_code, 302)
-
-
-        
